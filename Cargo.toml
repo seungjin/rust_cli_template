@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.5.4", features = ["derive"] }
 tokio = { version = "1.37", features = ["full"] }
-seungjin-add = { path = "crates/add" }
+seungjin-add = { path = "crates/seungjin-add" }
 
 
 [[bin]]

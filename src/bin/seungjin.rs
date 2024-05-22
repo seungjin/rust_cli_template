@@ -1,5 +1,6 @@
 use clap::{Parser, Subcommand};
-use std::ffi::OsString;
+use std::collections::HashMap;
+use std::{ffi::OsString, ops::Deref};
 
 #[derive(Parser, Debug)]
 #[clap(
@@ -22,9 +23,19 @@ enum Commands {
 async fn main() {
     let cli = Cli::parse();
 
+    let mut mods = HashMap::new();
+    mods.insert("add", seungjin_add::run);
+
     match cli.command {
         Commands::External(args) => {
-            seungjin_add::run(&args[0..]);
+            let cname = &*args[0].to_str().unwrap();
+
+            if !mods.contains_key(cname) {
+                println!("Command not found!")
+            } else {
+                let cmd = mods.get(cname).unwrap();
+                cmd(&args);
+            }
         }
     }
 }

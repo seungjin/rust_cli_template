@@ -15,6 +15,8 @@ pub fn add(x: i64, y: i64) -> i64 {
     x + y
 }
 
+//pub type Run = fn(&[OsStrin]);
+
 pub fn run(args: &[OsString]) {
     let cli = Cli::parse_from(args);
     inner_run(cli);
