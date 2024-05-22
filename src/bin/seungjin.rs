@@ -24,8 +24,6 @@ async fn main() {
 
     match cli.command {
         Commands::External(args) => {
-            //println!("Calling out to {:?} with {:?}", &args[0], &args[1..]);
-            println!("{:?}", &args[0..]);
             seungjin_add::run(&args[0..]);
         }
     }

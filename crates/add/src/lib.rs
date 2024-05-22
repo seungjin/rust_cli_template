@@ -1,6 +1,5 @@
-use clap::builder::OsStr;
+use clap::command;
 use clap::Parser;
-use clap::{arg, command, value_parser, ArgAction, Command};
 use std::ffi::OsString;
 
 #[derive(Parser)]
@@ -25,6 +24,3 @@ pub fn inner_run(c: Cli) {
     let r = add(c.x, c.y);
     println!("{} + {} = {}", c.x, c.y, r);
 }
-
-// allow_external_subcommands
-// https://docs.rs/clap/latest/clap/struct.Command.html#method.allow_external_subcommands
