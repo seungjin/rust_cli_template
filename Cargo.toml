@@ -1,0 +1,14 @@
+[package]
+name = "seungjin"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.4", features = ["derive"] }
+tokio = { version = "1.37", features = ["full"] }
+seungjin-add = { path = "crates/add" }
+
+
+[[bin]]
+name = "seungjin"
+path = "src/bin/seungjin.rs"
