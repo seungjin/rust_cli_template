@@ -19,23 +19,37 @@ enum Commands {
     External(Vec<OsString>),
 }
 
+//struct ExteralCommand {
+//    command: String,
+//    function: Fn,
+//}
+
 #[tokio::main]
 async fn main() {
     let cli = Cli::parse();
 
-    let mut mods = HashMap::new();
-    mods.insert("add", seungjin_add::run);
+    // let mut mods = HashMap::new();
+    // mods.insert("add", seungjin_add::run);
+    // mods.insert("concat", seungjin_concat::run);
 
     match cli.command {
         Commands::External(args) => {
             let cname = &*args[0].to_str().unwrap();
 
-            if !mods.contains_key(cname) {
-                println!("Command not found!")
-            } else {
-                let cmd = mods.get(cname).unwrap();
-                cmd(&args);
+            match cname {
+                "add" => seungjin_add::run(&args),
+                "concat" => seungjin_concat::run(&args),
+                _ => {
+                    println!("Command `{}` not found", cname)
+                }
             }
+
+            // if !mods.contains_key(cname) {
+            //     println!("Command `{}` not found!", cname);
+            // } else {
+            //     let cmd = mods.get(cname).unwrap();
+            //     cmd(&args);
+            // }
         }
     }
 }

@@ -3,12 +3,12 @@ use clap::Parser;
 use std::ffi::OsString;
 
 #[derive(Parser)]
-#[command(name = "Add")]
+#[command(name = "Concat")]
 #[command(version = "1.0")]
-#[command(about = "Add!", long_about = None)]
+#[command(about = "concat", long_about = None)]
 pub struct Cli {
-    pub x: i64,
-    pub y: i64,
+    pub x: String,
+    pub y: String,
 }
 
 pub trait Foo {
@@ -21,10 +21,10 @@ pub fn run(args: &[OsString]) {
 }
 
 pub fn inner_run(c: Cli) {
-    let r = add(c.x, c.y);
+    let r = concat(&c.x, &c.y);
     println!("{} + {} = {}", c.x, c.y, r);
 }
 
-pub fn add(x: i64, y: i64) -> i64 {
-    x + y
+pub fn concat(x: &String, y: &String) -> String {
+    format!("{}{}", x, y)
 }

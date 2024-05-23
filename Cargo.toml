@@ -7,6 +7,7 @@ edition = "2021"
 clap = { version = "4.5.4", features = ["derive"] }
 tokio = { version = "1.37", features = ["full"] }
 seungjin-add = { path = "crates/seungjin-add" }
+seungjin-concat = { path = "crates/seungjin-concat" }
 
 
 [[bin]]
